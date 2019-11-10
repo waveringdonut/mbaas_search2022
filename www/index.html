@@ -13,15 +13,8 @@
     var ncmb = new NCMB(appKey, clientKey);
     // 利用するデータベースを指定（存在しなければ生成）
     var TestClass = ncmb.DataStore("TestClass2");
-    // コールバックの登録など
-    $(function(){
-      $("#message").html("initialized");
-      $("#btnA").click(function(e){
-        btnAClick(e);
-      })
-    })
 
-    function btnAClick(e) {
+    function register() {
       // 登録するレコードを用意
       var testClass = new TestClass();
       var key = "text";
@@ -46,7 +39,7 @@
     <input id="value" type="text" value="Hello, mBaaS!">
   </div>
   <div id="button">
-    <button id="btnA" class="btn">Register</button>
+    <button id="btnA" class="btn" onclick="register()">Register</button>
   </div>
   <div id="message">message area</div>
 </body>
