@@ -7,7 +7,36 @@
     <script src="components/loader.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="keys.js"></script>
     <script>
+    // NCMB アクセスの準備
+    var ncmb = new NCMB(appKey, clientKey);
+    // 利用するデータベースを指定（存在しなければ生成）
+    var TestClass = ncmb.DataStore("TestClass2");
+    // コールバックの登録など
+    $(function(){
+      $("#message").html("initialized");
+      $("#btnA").click(function(e){
+        btnAClick(e);
+      })
+    })
+
+    function btnAClick(e) {
+      // 登録するレコードを用意
+      var testClass = new TestClass();
+      var key = "text";
+      var value = $("#value").val();
+      // レコードのフィールドと値を設定
+      testClass.set(key, value);
+      // レコードをデータベースに登録
+      testClass.save()
+      .then(function(m) {
+        $("#message").html("New object created with objectId: " + testClass.objectId);
+      })
+      .catch(function(err){
+        $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
+      })
+    }
     </script>
 </head>
 <body>
