@@ -12,7 +12,7 @@
     // NCMB アクセスの準備
     var ncmb = new NCMB(appKey, clientKey);
     // 利用するデータベースを指定（存在しなければ生成）
-    var TestClass = ncmb.DataStore("TestClass2");
+    var TestClass = ncmb.DataStore("FetchTest");
 
     function register() {
       // 登録するレコードを用意
@@ -33,7 +33,7 @@
     </script>
 </head>
 <body>
-  <h1>mBaaS sample 02</h1>
+  <h1>mBaaS fetch</h1>
   <div>
     <label for="value">Value:</label>
     <input id="value" type="text" value="Hello, mBaaS!">
