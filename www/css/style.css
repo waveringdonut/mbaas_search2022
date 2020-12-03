@@ -37,3 +37,14 @@ input {
   border-color: grey;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: solid;
+}
+
+td.num {
+  text-align: right;
+}
