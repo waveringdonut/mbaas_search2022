@@ -13,38 +13,6 @@
     let ncmb = new NCMB(appKey, clientKey);
     // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
     const db = "SearchTest";
-    // テスト用データを用意
-    const init_data = [
-      {name: "blue eyes white dragon", level: 8, attack: 3000, defence: 2500},
-      {name: "dark magician", level: 7, attack: 2500, defence: 2100},
-      {name: "jacks knight", level: 5, attack: 1900, defence: 1000},
-      {name: "queens knight", level: 4, attack: 1500, defence: 1600},
-      {name: "kings knight", level: 4, attack: 1600, defence: 1400},
-    ];
-
-    $(function() {
-      let TestDataClass = ncmb.DataStore(db);
-      TestDataClass.fetchAll() // 全件取得してみる
-      .then(function(results){
-        if(results.length < init_data.length) { // 登録済み件数をチェック
-          for(let i=0; i<init_data.length; i++) { // テスト用データを登録
-            let newRecord = new TestDataClass();
-            newRecord
-            .set("name", init_data[i].name)
-            .set("level", init_data[i].level)
-            .set("attack", init_data[i].attack)
-            .set("defence", init_data[i].defence)
-            .save();
-            // bad busy loop...
-            let startMsec = new Date();
-            while(new Date() - startMsec < 1000);
-          }
-          $("#message").html("Test DB initialized.");
-        } else {
-          $("#message").html("Test DB already exists.");
-        }
-      })
-    })
 
     function fetchAll() {
       let TestDataClass = ncmb.DataStore(db); 
@@ -85,6 +53,6 @@
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
   </div>
-  <div id="message">initializing...</div>
+  <div id="message">message area</div>
 </body>
 </html>
