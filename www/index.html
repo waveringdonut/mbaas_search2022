@@ -1,31 +1,32 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-    <script src="components/loader.js"></script>
-    <link rel="stylesheet" href="components/loader.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="keys.js"></script>
-    <script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="keys.js"></script>
+  <script>
     // NCMB アクセスの準備
     let ncmb = new NCMB(appKey, clientKey);
     // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
     const db = "m";
 
     function fetchAll() {
-      let TestDataClass = ncmb.DataStore(db); 
+      let TestDataClass = ncmb.DataStore(db);
       TestDataClass.fetchAll()
-      .then(function(results) {
-        showResults(results);
-      })
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function showResults(results) {
       // テーブルのヘッダを生成
-      let msg="<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th></tr>";
-      for(let i=0; i<results.length; i++) {
+      let msg = "<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th></tr>";
+      for (let i = 0; i < results.length; i++) {
         // 各データを収めた表の列を生成
         msg += "<tr>";
         msg += "<td>" + results[i].name + "</td>";
@@ -38,8 +39,9 @@
       msg += "</table>";
       $("#message").html(msg);
     }
-    </script>
+  </script>
 </head>
+
 <body>
   <h1>mBaaS search</h1>
   <div>
@@ -55,4 +57,5 @@
   </div>
   <div id="message">message area</div>
 </body>
+
 </html>
