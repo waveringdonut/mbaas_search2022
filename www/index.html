@@ -24,7 +24,12 @@
     }
 
     function searchName() {
-        
+        let TestDataClass = ncmb.DataStore(db);
+        let name = $("#name").val();
+        TestDataClass.equalTo("name", name).fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
     }
 
     function showResults(results) {
