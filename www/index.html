@@ -44,7 +44,9 @@
     function searchLevelLT() {
         let TestDataClass = ncmb.DataStore(db);
         let level = parseInt($("#level").val());
-        TestDataClass.equalTo("level", level).fetchAll()
+        TestDataClass
+        .lessThan("level", level)
+        .fetchAll()
         .then(function(results) {
           showResults(results);
         })
